@@ -5,85 +5,1333 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Look dos Advérbios: Ateliê de Estilo Gramatical</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --pink-1: #fdf2f8;
+            --pink-2: #fce7f3;
+            --pink-3: #f472b6;
+            --pink-4: #ec4899;
+            --purple-1: #f3e8ff;
+            --purple-2: #ddd6fe;
+            --purple-3: #8b5cf6;
+            --purple-4: #7c3aed;
+            --indigo-1: #e0e7ff;
+            --indigo-2: #c7d2fe;
+            --indigo-3: #4f46e5;
+            --amber-1: #fef3c7;
+            --amber-2: #fbbf24;
+            --slate-1: #f8fafc;
+            --slate-2: #e2e8f0;
+            --slate-3: #cbd5e1;
+            --slate-4: #475569;
+        }
+
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 50%, #e0e7ff 100%);
+            background: linear-gradient(180deg, #f5f0f6 0%, #f1ebf8 100%);
             min-height: 100vh;
+            color: #1f2937;
         }
+
         h1, h2, h3, .font-title {
             font-family: 'Fredoka', sans-serif;
         }
-        .card-hanger {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .main-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 12px 50px;
         }
-        .card-hanger:hover {
-            transform: translateY(-4px) scale(1.02);
+
+        .topbar {
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(236, 72, 153, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
         }
-        .card-selected {
-            ring: 4px solid #db2777;
-            background-color: #fce7f3;
-            transform: scale(1.04);
+
+        .brand-badge {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #ffb703, #f472b6, #8b5cf6);
+            border-radius: 14px;
+            box-shadow: inset 0 -8px 18px rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
         }
-        .word-chip {
-            transition: all 0.2s;
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-title .title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #8b5cf6;
+        }
+
+        .brand-title .mini {
+            letter-spacing: 0.18em;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #7c3aed;
+            display: block;
+            margin-left: 6px;
+            font-weight: 800;
+        }
+
+        .action-pill {
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 9px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .action-pill.pink {
+            background: linear-gradient(135deg, #ffe4f1, #f9d5ee);
+            color: #be185d;
+            border-color: #f9a8d4;
+        }
+
+        .action-pill.purple {
+            background: linear-gradient(135deg, #f4e8ff, #ece7ff);
+            color: #6d28d9;
+            border-color: #ddd6fe;
+        }
+
+        .action-pill.gold {
+            background: linear-gradient(135deg, #fff7d6, #fef3c7);
+            color: #b45309;
+            border-color: #fcd34d;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #7c3aed 0%, #a21caf 34%, #ec4899 100%);
+            border-radius: 18px 18px 14px 14px;
+            box-shadow: 0 22px 30px rgba(168, 85, 247, 0.18);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner::after {
+            content: "";
+            position: absolute;
+            right: 90px;
+            top: 18px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            filter: blur(8px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 26px 26px 18px;
+            min-height: 200px;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .chip {
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.18);
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            font-weight: 800;
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-title {
+            font-size: clamp(26px, 4vw, 52px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #fff;
+            margin: 0;
+            max-width: 700px;
+        }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            max-width: 760px;
+            margin-top: 10px;
+            line-height: 1.55;
+        }
+
+        .panel {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(203, 213, 225, 0.75);
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+        }
+
+        .form-panel {
+            padding: 20px 18px 18px;
+        }
+
+        .rules-panel {
+            padding: 18px 18px 14px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 18px;
+        }
+
+        .icon-wrap {
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fdf2f8, #f3e8ff);
+            border: 1px solid rgba(236,72,153,0.15);
+            box-shadow: inset 0 -4px 10px rgba(255,255,255,0.5);
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 800;
+            color: #475569;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .field input {
+            width: 100%;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font-size: 14px;
+            color: #334155;
+            background: #fff;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .field input:focus {
+            border-color: #f472b6;
+            box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.12);
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .avatar-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s ease;
             cursor: pointer;
         }
-        .word-chip:hover {
-            background-color: #f3e8ff;
-            transform: translateY(-2px);
+
+        .avatar-btn.is-selected {
+            border-color: #ec4899;
+            background: #fdf2f8;
+            box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.14);
         }
-        .word-selected {
-            background-color: #fde047 !important;
-            color: #713f12 !important;
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .mode-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            background: white;
+            padding: 12px 10px;
+            text-align: left;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .mode-card.is-selected {
+            border-color: #ec4899;
+            background: #fdf2f8;
+        }
+
+        .mode-card h4 {
+            font-size: 13px;
             font-weight: 800;
-            box-shadow: 0 2px 0 #ca8a04;
+            margin: 0 0 6px;
+            color: #be185d;
         }
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+
+        .mode-card .meta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 7px;
+            background: rgba(244,114,182,0.12);
+            color: #be185d;
         }
-        .animate-mannequin {
-            animation: pulse-soft 3s infinite ease-in-out;
+
+        .mode-card p {
+            margin: 8px 0 0;
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.5;
         }
+
+        .primary-btn {
+            width: 100%;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 14px 18px;
+            box-shadow: 0 12px 20px rgba(168, 85, 247, 0.22);
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 10px;
+            margin-bottom: 10px;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #fdf2f8, #f5e7ff);
+            border: 1px solid #f9a8d4;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #7c3aed;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .step-text {
+            font-size: 12px;
+            line-height: 1.45;
+            color: #334155;
+        }
+
+        .step-text strong {
+            font-size: 13px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .rule-box {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 11px;
+            color: #854d0e;
+            line-height: 1.4;
+        }
+
+        .stage-grid {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .stage-card {
+            background: linear-gradient(180deg, #ffffff, #f8fafc);
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 10px;
+            min-height: 130px;
+        }
+
+        .stage-card .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 8px;
+            margin-bottom: 8px;
+            letter-spacing: .03em;
+        }
+
+        .stage-card h5 {
+            font-size: 13px;
+            font-weight: 800;
+            margin: 0 0 6px;
+            color: #334155;
+        }
+
+        .stage-card p {
+            margin: 0;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #64748b;
+        }
+
+        .pink-bg { background: #fdf2f8; color: #be185d; }
+        .purple-bg { background: #f3e8ff; color: #7c3aed; }
+        .amber-bg { background: #fef3c7; color: #b45309; }
+
+        .vip-strip {
+            margin-top: 16px;
+            border-top: 1px solid rgba(203, 213, 225, .9);
+            padding-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: #475569;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .vip-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .vip-icons span {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: linear-gradient(135deg,#fdf2f8,#f5e7ff);
+            border: 1px solid rgba(196, 181, 253, .7);
+        }
+
+        @media (max-width: 768px) {
+            .topbar { border-radius: 16px; }
+            .brand-title .title { font-size: 16px; }
+            .hero-content { padding: 18px 16px 12px; }
+            .hero-sub { font-size: 13px; }
+            .mode-grid, .stage-grid { grid-template-columns: 1fr; }
+            .avatar-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            #certificate-area, #certificate-area * {
-                visibility: visible;
-            }
-            #certificate-area {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                box-shadow: none !important;
-            }
-            .no-print {
-                display: none !important;
-            }
+            body * { visibility: hidden; }
+            #certificate-area, #certificate-area * { visibility: visible; }
+            #certificate-area { position: absolute; left: 0; top: 0; width: 100%; }
+            .no-print { display: none !important; }
         }
+
+        .card-hanger { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hanger:hover { transform: translateY(-4px) scale(1.02); }
+        .card-selected { ring: 4px solid #db2777; background-color: #fce7f3; transform: scale(1.04); }
+        .word-chip { transition: all 0.2s; cursor: pointer; }
+        .word-chip:hover { background-color: #f3e8ff; transform: translateY(-2px); }
+        .word-selected { background-color: #fde047 !important; color: #713f12 !important; font-weight: 800; box-shadow: 0 2px 0 #ca8a04; }
+        @keyframes pulse-soft { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        .animate-mannequin { animation: pulse-soft 3s infinite ease-in-out; }
     </style>
 </head>
 <body class="text-slate-800 pb-12">
-
-    <!-- HEADER FIXO -->
-    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-pink-100 no-print">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-3">
-                <span class="text-3xl">👗</span>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                        Look dos Advérbios
-                    </h1>
-                    <p class="text-xs text-slate-500 font-semibold">Ateliê de Estilo Gramatical</p>
+    <div class="main-shell">
+        <header class="topbar py-3 px-4 md:px-5 sticky top-3 z-40 no-print">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="brand-title">
+                    <div class="brand-badge">✦</div>
+                    <div class="flex flex-col leading-none">
+                        <span class="mini uppercase">Ateliê de estilo gramatical</span>
+                        <span class="title">Look dos Advérbios</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="toggleModal('guide-modal')" class="action-pill pink">📖 Guia Rápido</button>
+                    <button onclick="toggleModal('rank-modal')" class="action-pill purple">🧥 Closet</button>
+                    <button onclick="toggleModal('rank-modal')" class="action-pill gold">🏆 Hall da Fama</button>
                 </div>
             </div>
+        </header>
 
-            <div class="flex items-center gap-2">
-                <button onclick="toggleModal('guide-modal')" class="px-3 py-1.5 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-800 text-xs md:text-sm font-bold flex items-center gap-1.5 transition">
-                    <span>📖</span> Guia dos Advérbios
+        <main class="mt-6">
+            <section id="screen-start" class="space-y-6">
+                <div class="hero-banner">
+                    <div class="hero-content">
+                        <div class="chip-row">
+                            <span class="chip">Ensino Fundamental</span>
+                            <span class="chip">+ 40 Frases &amp; Certificado Oficial</span>
+                        </div>
+                        <h2 class="hero-title">Vista a Gramática com Criatividade e Estilo!</h2>
+                        <p class="hero-sub">
+                            No Look dos Advérbios, cada frase é uma criação exclusiva! Identifique os advérbios de<br>
+                            Modo, Tempo, Lugar, Intensidade, Afirmação, Negação e Dúvida, customize seu avatar e receba seu<br>
+                            certificado de estilista gramatical!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-[1.05fr_1.3fr] gap-6">
+                    <div class="panel form-panel">
+                        <h3 class="section-title"><span class="icon-wrap">👤</span> Credencial de Estilista</h3>
+
+                        <div class="field">
+                            <label for="player-name">Nome do(a) Estudante *</label>
+                            <input id="player-name" type="text" placeholder="Ex: Ana Clara, Lucas..." />
+                        </div>
+
+                        <div class="field">
+                            <label for="player-class">Turma / Ano</label>
+                            <input id="player-class" type="text" placeholder="Ex: 6º Ano A" />
+                        </div>
+
+                        <div class="field">
+                            <label>Escolha seu modelo de manequim:</label>
+                            <div id="avatar-selector" class="avatar-grid"></div>
+                        </div>
+
+                        <div class="field">
+                            <label>Escolha o modo do desfile:</label>
+                            <div class="mode-grid">
+                                <button type="button" id="mode-free" class="mode-card is-selected" onclick="selectMode('free')">
+                                    <div class="flex items-center justify-between gap-2">
+                                        <h4>🎨 Ateliê Livre</h4>
+                                        <span class="meta">Reflexão</span>
+                                    </div>
+                                    <p>Sem limite de tempo. Ideal para analisar com calma.</p>
+                                </button>
+                                <button type="button" id="mode-timed" class="mode-card" onclick="selectMode('timed')">
+                                    <div class="flex items-center justify-between gap-2">
+                                        <h4>⏱️ Passarela Express</h4>
+                                        <span class="meta">30s</span>
+                                    </div>
+                                    <p>Contra o relógio! Ganhe bônus por velocidade.</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button onclick="startGame()" class="primary-btn">▶ Entrar no Ateliê e Começar!</button>
+                    </div>
+
+                    <div class="panel rules-panel">
+                        <h3 class="section-title"><span class="icon-wrap">🎯</span> Regras e Missão da Jornada</h3>
+
+                        <div class="journey-step">
+                            <div class="step-num">1</div>
+                            <div class="step-text"><strong>Examine a frase do cliente</strong> Cada rodada apresenta uma frase e você precisa identificar a categoria correta do advérbio.</div>
+                        </div>
+
+                        <div class="journey-step">
+                            <div class="step-num">2</div>
+                            <div class="step-text"><strong>Bonus do Olhar de Estilista</strong> Toque nas palavras que funcionam como advérbios para ganhar +50 pontos extras.</div>
+                        </div>
+
+                        <div class="journey-step">
+                            <div class="step-num">3</div>
+                            <div class="step-text"><strong>Vista a classificação correta</strong> Escolha a peça certa do guarda-roupa para vestir o manequim e avançar na jornada.</div>
+                        </div>
+
+                        <div class="journey-step">
+                            <div class="step-num">4</div>
+                            <div class="step-text"><strong>Desbloqueie acessórios VIP</strong> A cada 2 acertos, você ganha itens exclusivos para personalizar o avatar final.</div>
+                        </div>
+
+                        <div class="rule-box mt-3">
+                            <strong>💡 Dica:</strong> o jogo apresenta 3 etapas: Vitrine Casual, Passarela Criativa e Alta Costura Dupla. Cada etapa expande o desafio e o nível de atenção.
+                        </div>
+
+                        <div class="stage-grid">
+                            <div class="stage-card">
+                                <span class="badge pink-bg">Etapa 1</span>
+                                <h5>Vitrine Casual</h5>
+                                <p>Frases com 1 advérbio e etiquetas com dicas para aquecer.</p>
+                            </div>
+                            <div class="stage-card">
+                                <span class="badge purple-bg">Etapa 2</span>
+                                <h5>Passarela Criativa</h5>
+                                <p>Explora todas as 7 categorias sem dicas nas etiquetas.</p>
+                            </div>
+                            <div class="stage-card">
+                                <span class="badge amber-bg">Etapa 3</span>
+                                <h5>Alta Costura Dupla</h5>
+                                <p>Frases com 2 advérbios e sobreposição de peças.</p>
+                            </div>
+                        </div>
+
+                        <div class="vip-strip">
+                            <span>🧰 Coleção de acessórios VIP</span>
+                        </div>
+                        <div class="vip-icons">
+                            <span>🕶️</span>
+                            <span>👒</span>
+                            <span>📿</span>
+                            <span>🧣</span>
+                            <span>👜</span>
+                            <span>👑</span>
+                            <span>✨</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="screen-game" class="hidden space-y-6">
+                <div class="bg-white rounded-2xl p-4 shadow-md border border-pink-100 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div id="hud-avatar" class="w-11 h-11 rounded-full bg-pink-100 flex items-center justify-center text-2xl border-2 border-pink-400">👒</div>
+                        <div>
+                            <p id="hud-name" class="font-bold text-slate-800 text-sm md:text-base">Estilista</p>
+                            <span id="hud-stage-badge" class="text-xs px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold">Etapa 1: Vitrine Casual</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 md:gap-6">
+                        <div id="timer-box" class="hidden text-center bg-purple-50 px-3 py-1 rounded-xl border border-purple-200">
+                            <p class="text-[10px] uppercase font-bold text-purple-600">Tempo</p>
+                            <p id="hud-timer" class="text-lg font-extrabold text-purple-700">30s</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Look Atual</p>
+                            <p id="hud-progress" class="text-lg font-extrabold text-slate-700">1 / 15</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Acertos</p>
+                            <p id="hud-hits" class="text-lg font-extrabold text-emerald-600">0</p>
+                        </div>
+                        <div class="text-center bg-amber-50 px-3.5 py-1 rounded-xl border border-amber-200">
+                            <p class="text-[10px] uppercase font-bold text-amber-600">Pontos</p>
+                            <p id="hud-score" class="text-lg font-extrabold text-amber-700">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-4 bg-white rounded-3xl p-5 shadow-lg border border-pink-100 flex flex-col items-center justify-between">
+                        <div class="w-full flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Passarela do Ateliê</span>
+                            <span id="mannequin-status" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">Aguardando Peça...</span>
+                        </div>
+                        <div id="mannequin-stage" class="w-56 h-72 my-2 flex items-center justify-center relative animate-mannequin"></div>
+                        <div class="w-full bg-slate-50 rounded-2xl p-3 border border-slate-200 mt-2">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="text-xs font-bold text-slate-700">✨ Closet VIP (Desbloqueios):</span>
+                                <span id="vip-count" class="text-xs font-bold text-pink-600">0/7</span>
+                            </div>
+                            <div id="vip-bar" class="grid grid-cols-7 gap-1"></div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-8 space-y-5">
+                        <div class="bg-white rounded-3xl p-6 shadow-lg border-2 border-pink-200 relative overflow-hidden">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <span id="phrase-badge" class="px-3 py-1 rounded-full bg-pink-100 text-pink-800 text-xs font-extrabold uppercase">👗 Escolha 1 Peça do Guarda-Roupa</span>
+                                <span class="text-xs font-bold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">💡 Bônus (+50 pts): Toque na(s) palavra(s) que são advérbios na frase!</span>
+                            </div>
+                            <p class="text-xs text-slate-400 font-bold uppercase mb-1">Frase na Estampa da Roupa:</p>
+                            <div id="phrase-words-container" class="flex flex-wrap gap-2 items-center py-3 px-4 bg-slate-50 rounded-2xl border border-slate-200 min-h-[72px]"></div>
+                            <p id="selected-words-hint" class="text-xs text-slate-500 mt-2 font-semibold">Nenhuma palavra marcada como bônus ainda (opcional).</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-6 shadow-lg border border-pink-100">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><span>🧥</span> Guarda-Roupa de Classificações</h3>
+                                <span id="selection-counter" class="text-xs font-bold text-slate-500">Selecionadas: 0</span>
+                            </div>
+                            <div id="wardrobe-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+                            <div class="mt-6 flex flex-wrap items-center justify-end gap-3">
+                                <button id="btn-confirm" onclick="confirmLook()" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold shadow-md transition">
+                                    ✨ Desfilar com este Look!
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="feedback-box" class="hidden rounded-3xl p-6 shadow-lg border-2 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div class="space-y-1">
+                                    <h4 id="feedback-title" class="text-xl font-bold"></h4>
+                                    <p id="feedback-explanation" class="text-sm text-slate-700"></p>
+                                    <p id="feedback-bonus" class="text-xs font-bold mt-1"></p>
+                                </div>
+                                <button onclick="nextQuestion()" class="px-6 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shrink-0 transition">Próximo Look ➡️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="screen-end" class="hidden space-y-8">
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-pink-100 no-print">
+                    <div class="text-center max-w-2xl mx-auto space-y-2">
+                        <span class="px-4 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-xs uppercase">Desfile Concluído!</span>
+                        <h2 class="text-3xl font-bold text-slate-800">Camarim VIP &amp; Certificado Oficial</h2>
+                        <p class="text-sm text-slate-600">Personalize o visual final do seu manequim com os acessórios que você conquistou e imprima ou salve seu certificado de estilista gramatical.</p>
+                    </div>
+                    <div class="grid md:grid-cols-12 gap-6 mt-8 items-start">
+                        <div class="md:col-span-5 bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-4">
+                            <h3 class="font-bold text-slate-800 flex items-center gap-2"><span>🪞</span> Personalizar Avatar do Certificado</h3>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-1">Cor do Traje Principal:</label>
+                                <div id="custom-color-picker" class="flex flex-wrap gap-2"></div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-1">Acessórios VIP Desbloqueados (Toque para usar/tirar):</label>
+                                <div id="custom-vip-toggles" class="grid grid-cols-2 gap-2"></div>
+                            </div>
+                            <div class="pt-3 flex flex-wrap gap-3">
+                                <button onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2"><span>🖨️</span> Imprimir / Salvar PDF</button>
+                                <button onclick="resetToStart()" class="py-3 px-4 rounded-xl bg-pink-100 hover:bg-pink-200 text-pink-800 font-bold text-sm transition">🔄 Jogar Novamente</button>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7">
+                            <div id="certificate-area" class="bg-gradient-to-br from-amber-50 via-white to-pink-50 rounded-3xl p-6 md:p-8 border-4 border-double border-amber-400 shadow-lg relative overflow-hidden">
+                                <div class="flex flex-col sm:flex-row items-center gap-6">
+                                    <div id="cert-mannequin" class="w-40 h-52 bg-white rounded-2xl border-2 border-amber-200 flex items-center justify-center shrink-0 shadow-inner"></div>
+                                    <div class="space-y-2 text-center sm:text-left flex-1">
+                                        <div class="text-xs font-extrabold uppercase tracking-widest text-amber-700">Certificado de Excelência em Língua Portuguesa</div>
+                                        <h3 class="text-2xl font-bold text-slate-800">Ateliê Look dos Advérbios</h3>
+                                        <p class="text-xs text-slate-600">Certificamos que o(a) estudante estilista:</p>
+                                        <p id="cert-name" class="text-xl font-extrabold text-pink-700 border-b border-pink-200 pb-1">Nome do Estudante</p>
+                                        <p class="text-xs text-slate-600">da turma <strong id="cert-class">5º Ano</strong> concluiu a jornada de análise gramatical conquistando o título de:</p>
+                                        <div id="cert-title" class="inline-block px-3 py-1 rounded-full bg-amber-200 text-amber-900 font-extrabold text-sm">👑 Estilista Chefe dos Advérbios</div>
+                                        <div class="grid grid-cols-3 gap-2 pt-2 text-center">
+                                            <div class="bg-white p-2 rounded-xl border border-slate-200">
+                                                <p class="text-[10px] text-slate-400 font-bold uppercase">Pontuação</p>
+                                                <p id="cert-score" class="font-extrabold text-slate-800 text-sm">0 pts</p>
+                                            </div>
+                                            <div class="bg-white p-2 rounded-xl border border-slate-200">
+                                                <p class="text-[10px] text-slate-400 font-bold uppercase">Looks Certos</p>
+                                                <p id="cert-hits" class="font-extrabold text-emerald-600 text-sm">0 / 15</p>
+                                            </div>
+                                            <div class="bg-white p-2 rounded-xl border border-slate-200">
+                                                <p class="text-[10px] text-slate-400 font-bold uppercase">Data</p>
+                                                <p id="cert-date" class="font-extrabold text-slate-700 text-xs">--/--/----</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-amber-200 flex justify-between items-center text-xs text-slate-500">
+                                    <span>Assinatura do(a) Professor(a): ___________________________</span>
+                                    <span class="font-bold text-pink-600">Look dos Advérbios ✨</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="guide-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+            <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b pb-3">
+                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span>📖</span> Catálogo de Estilo: Os 7 Tipos de Advérbios</h3>
+                    <button onclick="toggleModal('guide-modal')" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+                </div>
+                <p class="text-sm text-slate-600">O <strong>advérbio</strong> é a palavra que acompanha o verbo, o adjetivo ou outro advérbio, acrescentando uma circunstância (como, quando, onde, quanto, etc.). Veja as peças do nosso guarda-roupa:</p>
+                <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-xl bg-pink-50 border border-pink-200"><p class="font-bold text-pink-700 text-sm">⚡ Intensidade (Quanto?)</p><p class="text-slate-600 mt-1">Exemplos: <em>muito, pouco, demais, bastante, tão, menos, quase.</em></p></div>
+                    <div class="p-3 rounded-xl bg-sky-50 border border-sky-200"><p class="font-bold text-sky-700 text-sm">⏰ Tempo (Quando?)</p><p class="text-slate-600 mt-1">Exemplos: <em>ontem, hoje, amanhã, sempre, cedo, tarde, agora, já.</em></p></div>
+                    <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200"><p class="font-bold text-emerald-700 text-sm">📍 Lugar (Onde?)</p><p class="text-slate-600 mt-1">Exemplos: <em>embaixo, lá fora, ali, perto, longe, aqui, dentro, no pátio.</em></p></div>
+                    <div class="p-3 rounded-xl bg-purple-50 border border-purple-200"><p class="font-bold text-purple-700 text-sm">🎭 Modo (Como?)</p><p class="text-slate-600 mt-1">Exemplos: <em>calmamente, atentamente, bem, mal, depressa, devagar.</em></p></div>
+                    <div class="p-3 rounded-xl bg-teal-50 border border-teal-200"><p class="font-bold text-teal-700 text-sm">✅ Afirmação</p><p class="text-slate-600 mt-1">Exemplos: <em>sim, certamente, realmente, deveras, efetivamente.</em></p></div>
+                    <div class="p-3 rounded-xl bg-rose-50 border border-rose-200"><p class="font-bold text-rose-700 text-sm">🚫 Negação</p><p class="text-slate-600 mt-1">Exemplos: <em>não, nunca, jamais, tampouco, de modo algum.</em></p></div>
+                    <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 sm:col-span-2"><p class="font-bold text-amber-700 text-sm">❓ Dúvida</p><p class="text-slate-600 mt-1">Exemplos: <em>talvez, possivelmente, provavelmente, acaso, quiçá.</em></p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rank-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+            <div class="bg-white rounded-3xl max-w-xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b pb-3">
+                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span>🏆</span> Hall da Fama dos Estilistas</h3>
+                    <button onclick="toggleModal('rank-modal')" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+                </div>
+                <div id="ranking-list" class="space-y-2.5"></div>
+                <div class="pt-3 border-t flex justify-between items-center">
+                    <button onclick="clearRanking()" class="text-xs text-rose-600 hover:underline font-bold">Limpar histórico local</button>
+                    <button onclick="toggleModal('rank-modal')" class="px-5 py-2 rounded-xl bg-slate-800 text-white text-xs font-bold">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CATEGORIES = [
+            { id: 'Intensidade', label: 'Intensidade', hint: 'Quanto?', icon: '⚡', piece: 'Jaqueta Jeans', color: '#db2777', bg: 'bg-pink-50', border: 'border-pink-300', text: 'text-pink-800' },
+            { id: 'Tempo', label: 'Tempo', hint: 'Quando?', icon: '⏰', piece: 'Camiseta Estampada', color: '#0284c7', bg: 'bg-sky-50', border: 'border-sky-300', text: 'text-sky-800' },
+            { id: 'Lugar', label: 'Lugar', hint: 'Onde?', icon: '📍', piece: 'Calça Cargo', color: '#059669', bg: 'bg-emerald-50', border: 'border-emerald-300', text: 'text-emerald-800' },
+            { id: 'Modo', label: 'Modo', hint: 'Como?', icon: '🎭', piece: 'Vestido Elegante', color: '#7c3aed', bg: 'bg-purple-50', border: 'border-purple-300', text: 'text-purple-800' },
+            { id: 'Afirmação', label: 'Afirmação', hint: 'Confirmação', icon: '✅', piece: 'Blazer Clássico', color: '#0d9488', bg: 'bg-teal-50', border: 'border-teal-300', text: 'text-teal-800' },
+            { id: 'Negação', label: 'Negação', hint: 'Recusa', icon: '🚫', piece: 'Moletom Urbano', color: '#e11d48', bg: 'bg-rose-50', border: 'border-rose-300', text: 'text-rose-800' },
+            { id: 'Dúvida', label: 'Dúvida', hint: 'Incerteza', icon: '❓', piece: 'Colete Fashion', color: '#d97706', bg: 'bg-amber-50', border: 'border-amber-300', text: 'text-amber-800' }
+        ];
+
+        const AVATARS = ['👒', '🕶️', '🎩', '👑', '🎀', '🧢', '🧣', '👟'];
+
+        const VIP_ACCESSORIES = [
+            { id: 'glasses', name: 'Óculos Visionário', icon: '🕶️', reqHits: 2 },
+            { id: 'beret', name: 'Boina Parisiense', icon: '👒', reqHits: 4 },
+            { id: 'necklace', name: 'Colar Dourado', icon: '📿', reqHits: 6 },
+            { id: 'cape', name: 'Capa Alta Costura', icon: '🧣', reqHits: 8 },
+            { id: 'bag', name: 'Bolsa Criador', icon: '👜', reqHits: 10 },
+            { id: 'crown', name: 'Coroa Real', icon: '👑', reqHits: 12 },
+            { id: 'stars', name: 'Aura Estelar', icon: '✨', reqHits: 14 }
+        ];
+
+        const QUESTION_BANK = [
+            { stage: 1, sentence: 'Luna é muito carinhosa.', cats: ['Intensidade'], adverbs: ['muito'], exp: "'Muito' intensifica a qualidade 'carinhosa' (Advérbio de Intensidade)." },
+            { stage: 1, sentence: 'O estudante esqueceu o livro ontem.', cats: ['Tempo'], adverbs: ['ontem'], exp: "'Ontem' indica quando o fato aconteceu (Advérbio de Tempo)." },
+            { stage: 1, sentence: 'O livro está embaixo da mesa.', cats: ['Lugar'], adverbs: ['embaixo'], exp: "'Embaixo' aponta a posição espacial do livro (Advérbio de Lugar)." },
+            { stage: 1, sentence: 'Ana falou pouco durante a apresentação.', cats: ['Intensidade'], adverbs: ['pouco'], exp: "'Pouco' indica a intensidade da ação de falar (Advérbio de Intensidade)." },
+            { stage: 1, sentence: 'A professora explicou a atividade calmamente.', cats: ['Modo'], adverbs: ['calmamente'], exp: "'Calmamente' revela a maneira como a professora explicou (Advérbio de Modo)." },
+            { stage: 1, sentence: 'As crianças correram lá fora.', cats: ['Lugar'], adverbs: ['lá', 'fora'], exp: "'Lá fora' indica onde as crianças correram (Advérbio de Lugar)." },
+            { stage: 1, sentence: 'Sempre estaremos juntos.', cats: ['Tempo'], adverbs: ['Sempre'], exp: "'Sempre' indica frequência no tempo (Advérbio de Tempo)." },
+            { stage: 1, sentence: 'A mochila estava ali, perto da porta.', cats: ['Lugar'], adverbs: ['ali,', 'perto'], exp: "'Ali' e 'perto' indicam a localização da mochila (Advérbio de Lugar)." },
+            { stage: 1, sentence: 'Pedro estudou demais para a prova.', cats: ['Intensidade'], adverbs: ['demais'], exp: "'Demais' mostra o grau intenso do estudo de Pedro (Advérbio de Intensidade)." },
+            { stage: 1, sentence: 'O aluno leu o texto atentamente.', cats: ['Modo'], adverbs: ['atentamente.'], exp: "'Atentamente' mostra o modo cuidadoso da leitura (Advérbio de Modo)." },
+            { stage: 1, sentence: 'Fui bem na prova.', cats: ['Modo'], adverbs: ['bem'], exp: "'Bem' expressa o modo como o estudante se saiu na avaliação (Advérbio de Modo)." },
+            { stage: 1, sentence: 'A turma chegou cedo para a gincana escolar.', cats: ['Tempo'], adverbs: ['cedo'], exp: "'Cedo' marca o momento da chegada (Advérbio de Tempo)." },
+            { stage: 1, sentence: 'Os cadernos novos ficaram dentro do armário.', cats: ['Lugar'], adverbs: ['dentro'], exp: "'Dentro' indica o lugar onde os cadernos foram guardados (Advérbio de Lugar)." },
+            { stage: 1, sentence: 'A equipe resolveu o desafio rapidamente.', cats: ['Modo'], adverbs: ['rapidamente.'], exp: "'Rapidamente' expressa a velocidade/modo da resolução (Advérbio de Modo)." },
+            { stage: 2, sentence: 'O colega não participou da atividade.', cats: ['Negação'], adverbs: ['não'], exp: "'Não' nega a ação de participar (Advérbio de Negação)." },
+            { stage: 2, sentence: 'A menina respondeu sim à pergunta.', cats: ['Afirmação'], adverbs: ['sim'], exp: "'Sim' confirma a resposta dada pela menina (Advérbio de Afirmação)." },
+            { stage: 2, sentence: 'Certamente faremos uma ótima feira cultural.', cats: ['Afirmação'], adverbs: ['Certamente'], exp: "'Certamente' confirma com segurança a realização da feira (Advérbio de Afirmação)." },
+            { stage: 2, sentence: 'Provavelmente teremos ensaio de teatro à tarde.', cats: ['Dúvida'], adverbs: ['Provavelmente'], exp: "'Provavelmente' indica possibilidade ou incerteza (Advérbio de Dúvida)." },
+            { stage: 2, sentence: 'Jamais desistiremos dos nossos sonhos.', cats: ['Negação'], adverbs: ['Jamais'], exp: "'Jamais' expressa uma negação enfática (Advérbio de Negação)." },
+            { stage: 2, sentence: 'Acaso você viu meu estojo colorido?', cats: ['Dúvida'], adverbs: ['Acaso'], exp: "'Acaso' expressa incerteza na pergunta (Advérbio de Dúvida)." },
+            { stage: 2, sentence: 'Realmente aquele livro de aventuras é fascinante.', cats: ['Afirmação'], adverbs: ['Realmente'], exp: "'Realmente' reforça positivamente a afirmação (Advérbio de Afirmação)." },
+            { stage: 2, sentence: 'Nunca deixe de fazer suas perguntas na aula.', cats: ['Negação'], adverbs: ['Nunca'], exp: "'Nunca' expressa negação absoluta em qualquer tempo (Advérbio de Negação)." },
+            { stage: 2, sentence: 'Possivelmente o autor visitará nossa escola.', cats: ['Dúvida'], adverbs: ['Possivelmente'], exp: "'Possivelmente' indica que a visita é uma hipótese (Advérbio de Dúvida)." },
+            { stage: 2, sentence: 'Os estudantes colaboraram bastante com a campanha.', cats: ['Intensidade'], adverbs: ['bastante'], exp: "'Bastante' intensifica a ação de colaborar (Advérbio de Intensidade)." },
+            { stage: 2, sentence: 'O ônibus escolar estacionou longe da entrada.', cats: ['Lugar'], adverbs: ['longe'], exp: "'Longe' indica distância espacial (Advérbio de Lugar)." },
+            { stage: 2, sentence: 'O coral cantou suavemente na abertura do evento.', cats: ['Modo'], adverbs: ['suavemente'], exp: "'Suavemente' indica o modo delicado do canto (Advérbio de Modo)." },
+            { stage: 3, sentence: 'Talvez a turma apresente o trabalho amanhã.', cats: ['Dúvida', 'Tempo'], adverbs: ['Talvez', 'amanhã.'], exp: "Look Duplo! 'Talvez' indica Dúvida e 'amanhã' indica Tempo." },
+            { stage: 3, sentence: 'Os alunos brincarão amanhã no pátio.', cats: ['Tempo', 'Lugar'], adverbs: ['amanhã', 'pátio.'], exp: "Look Duplo! 'Amanhã' indica Tempo e 'no pátio' indica Lugar." },
+            { stage: 3, sentence: 'Ontem a turma trabalhou alegremente.', cats: ['Tempo', 'Modo'], adverbs: ['Ontem', 'alegremente.'], exp: "Look Duplo! 'Ontem' indica Tempo e 'alegremente' indica Modo." },
+            { stage: 3, sentence: 'Certamente os convidados chegarão cedo.', cats: ['Afirmação', 'Tempo'], adverbs: ['Certamente', 'cedo.'], exp: "Look Duplo! 'Certamente' indica Afirmação e 'cedo' indica Tempo." },
+            { stage: 3, sentence: 'O gatinho não dormiu ali.', cats: ['Negação', 'Lugar'], adverbs: ['não', 'ali.'], exp: "Look Duplo! 'Não' indica Negação e 'ali' indica Lugar." },
+            { stage: 3, sentence: 'Hoje o vento soprou muito forte.', cats: ['Tempo', 'Intensidade'], adverbs: ['Hoje', 'muito'], exp: "Look Duplo! 'Hoje' indica Tempo e 'muito' indica Intensidade." },
+            { stage: 3, sentence: 'Realmente a aluna desenha muito bem.', cats: ['Afirmação', 'Intensidade'], adverbs: ['Realmente', 'muito'], exp: "Look Duplo! 'Realmente' é Afirmação e 'muito' é Intensidade (além de 'bem' que é Modo)." },
+            { stage: 3, sentence: 'Talvez o atleta corra devagar na trilha.', cats: ['Dúvida', 'Modo'], adverbs: ['Talvez', 'devagar'], exp: "Look Duplo! 'Talvez' expressa Dúvida e 'devagar' expressa Modo." },
+            { stage: 3, sentence: 'Nós nunca conversamos alto na biblioteca.', cats: ['Negação', 'Modo'], adverbs: ['nunca', 'alto'], exp: "Look Duplo! 'Nunca' expressa Negação e 'alto' expressa Modo." },
+            { stage: 3, sentence: 'Aqui as flores crescem rapidamente.', cats: ['Lugar', 'Modo'], adverbs: ['Aqui', 'rapidamente.'], exp: "Look Duplo! 'Aqui' indica Lugar e 'rapidamente' indica Modo." }
+        ];
+
+        let state = {
+            playerName: '',
+            playerClass: '',
+            avatar: AVATARS[0],
+            mode: 'free',
+            questions: [],
+            currentIndex: 0,
+            score: 0,
+            hits: 0,
+            selectedCats: [],
+            selectedWords: [],
+            unlockedVip: [],
+            activeVip: [],
+            outfitColor: '#db2777',
+            timer: null,
+            timeLeft: 30,
+            answered: false
+        };
+
+        window.onload = () => {
+            renderAvatarSelector();
+            renderRanking();
+        };
+
+        function renderAvatarSelector() {
+            const container = document.getElementById('avatar-selector');
+            container.innerHTML = AVATARS.map((av, idx) => `
+                <button type="button" onclick="selectAvatar('${av}')" class="avatar-btn ${idx === 0 ? 'is-selected' : ''}">
+                    ${av}
                 </button>
-                <button onclick="toggleModal('rank-modal')" class="
+            `).join('');
+        }
+
+        function selectAvatar(av) {
+            state.avatar = av;
+            document.querySelectorAll('.avatar-btn').forEach(btn => {
+                btn.classList.toggle('is-selected', btn.textContent.trim() === av);
+            });
+        }
+
+        function selectMode(mode) {
+            state.mode = mode;
+            const btnFree = document.getElementById('mode-free');
+            const btnTimed = document.getElementById('mode-timed');
+            btnFree.classList.toggle('is-selected', mode === 'free');
+            btnTimed.classList.toggle('is-selected', mode === 'timed');
+        }
+
+        function shuffle(arr) {
+            return [...arr].sort(() => Math.random() - 0.5);
+        }
+
+        function startGame() {
+            const nameInput = document.getElementById('player-name').value.trim();
+            const classInput = document.getElementById('player-class').value.trim();
+
+            state.playerName = nameInput || 'Estilista Criativo(a)';
+            state.playerClass = classInput || 'Ensino Fundamental';
+
+            const s1 = shuffle(QUESTION_BANK.filter(q => q.stage === 1)).slice(0, 5);
+            const s2 = shuffle(QUESTION_BANK.filter(q => q.stage === 2)).slice(0, 5);
+            const s3 = shuffle(QUESTION_BANK.filter(q => q.stage === 3)).slice(0, 5);
+
+            state.questions = [...s1, ...s2, ...s3];
+            state.currentIndex = 0;
+            state.score = 0;
+            state.hits = 0;
+            state.unlockedVip = [];
+            state.activeVip = [];
+            state.outfitColor = '#db2777';
+
+            document.getElementById('hud-avatar').textContent = state.avatar;
+            document.getElementById('hud-name').textContent = `${state.playerName} (${state.playerClass})`;
+            document.getElementById('timer-box').classList.toggle('hidden', state.mode !== 'timed');
+
+            document.getElementById('screen-start').classList.add('hidden');
+            document.getElementById('screen-end').classList.add('hidden');
+            document.getElementById('screen-game').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            clearInterval(state.timer);
+            state.answered = false;
+            state.selectedCats = [];
+            state.selectedWords = [];
+
+            const q = state.questions[state.currentIndex];
+            const reqCount = q.cats.length;
+
+            document.getElementById('hud-progress').textContent = `${state.currentIndex + 1} / ${state.questions.length}`;
+            document.getElementById('hud-hits').textContent = state.hits;
+            document.getElementById('hud-score').textContent = state.score;
+
+            const stageBadge = document.getElementById('hud-stage-badge');
+            if (q.stage === 1) {
+                stageBadge.textContent = 'Etapa 1: Vitrine Casual';
+                stageBadge.className = 'text-xs px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold';
+            } else if (q.stage === 2) {
+                stageBadge.textContent = 'Etapa 2: Passarela Criativa';
+                stageBadge.className = 'text-xs px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-700 font-bold';
+            } else {
+                stageBadge.textContent = 'Etapa 3: Alta Costura Dupla (2 Peças!)';
+                stageBadge.className = 'text-xs px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-bold';
+            }
+
+            const phraseBadge = document.getElementById('phrase-badge');
+            phraseBadge.textContent = reqCount === 2 ? '👑 Look Sobreposição: Escolha 2 Peças do Guarda-Roupa!' : '👗 Escolha 1 Peça do Guarda-Roupa';
+
+            const words = q.sentence.split(' ');
+            const wordsContainer = document.getElementById('phrase-words-container');
+            wordsContainer.innerHTML = words.map((w, i) => `
+                <span onclick="toggleWord(${i}, '${w.replace(/'/g, "\\'")}', '${w.replace(/'/g, "\\'")}')" id="word-${i}" class="word-chip px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-base md:text-lg font-bold text-slate-800 select-none">
+                    ${w}
+                </span>
+            `).join('');
+
+            updateWordHint();
+            renderWardrobe(q.stage);
+            renderMannequin('mannequin-stage');
+            renderVipBar();
+
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('btn-confirm').classList.remove('hidden');
+
+            if (state.mode === 'timed') {
+                state.timeLeft = 30;
+                document.getElementById('hud-timer').textContent = `${state.timeLeft}s`;
+                state.timer = setInterval(() => {
+                    state.timeLeft--;
+                    document.getElementById('hud-timer').textContent = `${state.timeLeft}s`;
+                    if (state.timeLeft <= 0) {
+                        clearInterval(state.timer);
+                        confirmLook(true);
+                    }
+                }, 1000);
+            }
+        }
+
+        function toggleWord(idx, wordText) {
+            if (state.answered) return;
+            const el = document.getElementById(`word-${idx}`);
+            const pos = state.selectedWords.indexOf(wordText);
+            if (pos > -1) {
+                state.selectedWords.splice(pos, 1);
+                el.classList.remove('word-selected');
+            } else {
+                state.selectedWords.push(wordText);
+                el.classList.add('word-selected');
+            }
+            updateWordHint();
+        }
+
+        function updateWordHint() {
+            const hint = document.getElementById('selected-words-hint');
+            if (state.selectedWords.length === 0) {
+                hint.textContent = 'Toque no(s) advérbio(s) da frase acima para ganhar +50 pts bônus!';
+            } else {
+                hint.textContent = `Palavra(s) marcada(s) no Olhar de Estilista: "${state.selectedWords.join(', ')}"`;
+            }
+        }
+
+        function renderWardrobe(stage) {
+            const q = state.questions[state.currentIndex];
+            const reqCount = q.cats.length;
+            document.getElementById('selection-counter').textContent = `Selecionadas: ${state.selectedCats.length} / ${reqCount}`;
+
+            const grid = document.getElementById('wardrobe-grid');
+            grid.innerHTML = CATEGORIES.map(cat => {
+                const isSelected = state.selectedCats.includes(cat.id);
+                return `
+                    <button type="button" onclick="toggleCategory('${cat.id}')" class="card-hanger p-3.5 rounded-2xl border-2 text-left transition flex flex-col justify-between ${isSelected ? 'card-selected border-pink-600' : `${cat.bg} ${cat.border}`}">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-2xl">${cat.icon}</span>
+                            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-white/80 text-slate-600">${cat.piece}</span>
+                        </div>
+                        <div class="mt-2">
+                            <p class="font-bold text-sm ${cat.text}">${cat.label}</p>
+                            ${stage === 1 ? `<p class="text-[11px] text-slate-500 font-semibold">${cat.hint}</p>` : ''}
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function toggleCategory(catId) {
+            if (state.answered) return;
+            const q = state.questions[state.currentIndex];
+            const maxSelect = q.cats.length;
+
+            const idx = state.selectedCats.indexOf(catId);
+            if (idx > -1) {
+                state.selectedCats.splice(idx, 1);
+            } else {
+                if (maxSelect === 1) {
+                    state.selectedCats = [catId];
+                } else {
+                    if (state.selectedCats.length < maxSelect) {
+                        state.selectedCats.push(catId);
+                    } else {
+                        state.selectedCats.shift();
+                        state.selectedCats.push(catId);
+                    }
+                }
+            }
+
+            if (state.selectedCats.length > 0) {
+                const lastCat = CATEGORIES.find(c => c.id === state.selectedCats[state.selectedCats.length - 1]);
+                if (lastCat) state.outfitColor = lastCat.color;
+                document.getElementById('mannequin-status').textContent = state.selectedCats.join(' + ');
+            } else {
+                document.getElementById('mannequin-status').textContent = 'Aguardando Peça...';
+            }
+
+            renderWardrobe(q.stage);
+            renderMannequin('mannequin-stage');
+        }
+
+        function confirmLook(timeout = false) {
+            if (state.answered) return;
+            const q = state.questions[state.currentIndex];
+
+            if (!timeout && state.selectedCats.length < q.cats.length) {
+                alert(`Este look pede ${q.cats.length} peça(s) do guarda-roupa! Selecione antes de desfilar.`);
+                return;
+            }
+
+            clearInterval(state.timer);
+            state.answered = true;
+
+            const isCorrect = q.cats.every(c => state.selectedCats.includes(c)) && state.selectedCats.length === q.cats.length;
+            const cleanSelected = state.selectedWords.map(w => w.replace(/[.,?!]/g, '').toLowerCase());
+            const cleanTarget = q.adverbs.map(w => w.replace(/[.,?!]/g, '').toLowerCase());
+            const gotWordBonus = cleanSelected.some(w => cleanTarget.includes(w));
+
+            let earned = 0;
+            if (isCorrect) {
+                state.hits++;
+                earned += q.stage === 3 ? 150 : 100;
+                if (state.mode === 'timed') earned += state.timeLeft * 2;
+                if (gotWordBonus) earned += 50;
+                state.score += earned;
+
+                VIP_ACCESSORIES.forEach(acc => {
+                    if (state.hits >= acc.reqHits && !state.unlockedVip.includes(acc.id)) {
+                        state.unlockedVip.push(acc.id);
+                        state.activeVip.push(acc.id);
+                    }
+                });
+            }
+
+            const box = document.getElementById('feedback-box');
+            const title = document.getElementById('feedback-title');
+            const exp = document.getElementById('feedback-explanation');
+            const bonus = document.getElementById('feedback-bonus');
+
+            box.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-300', 'bg-rose-50', 'border-rose-300');
+            if (isCorrect) {
+                box.classList.add('bg-emerald-50', 'border-emerald-300');
+                title.className = 'text-xl font-bold text-emerald-800';
+                title.textContent = `🎉 Look Impecável! (+${earned} pts)`;
+            } else {
+                box.classList.add('bg-rose-50', 'border-rose-300');
+                title.className = 'text-xl font-bold text-rose-800';
+                title.textContent = timeout ? '⏰ Tempo Esgotado na Passarela!' : '🧵 Combinação Descombinada!';
+            }
+
+            exp.innerHTML = `<strong>Gabarito (${q.cats.join(' + ')}):</strong> ${q.exp}`;
+            bonus.textContent = gotWordBonus
+                ? '✨ Bônus Olhar de Estilista (+50 pts): Você destacou corretamente o advérbio na frase!'
+                : `💡 Advérbio(s) em destaque na frase: "${q.adverbs.join(' / ')}"`;
+
+            document.getElementById('btn-confirm').classList.add('hidden');
+            document.getElementById('hud-hits').textContent = state.hits;
+            document.getElementById('hud-score').textContent = state.score;
+
+            renderVipBar();
+            renderMannequin('mannequin-stage');
+        }
+
+        function nextQuestion() {
+            state.currentIndex++;
+            if (state.currentIndex < state.questions.length) {
+                loadQuestion();
+            } else {
+                finishGame();
+            }
+        }
+
+        function renderMannequin(containerId) {
+            const container = document.getElementById(containerId);
+            const color = state.outfitColor || '#db2777';
+            const hasGlasses = state.activeVip.includes('glasses');
+            const hasBeret = state.activeVip.includes('beret');
+            const hasNecklace = state.activeVip.includes('necklace');
+            const hasCape = state.activeVip.includes('cape');
+            const hasBag = state.activeVip.includes('bag');
+            const hasCrown = state.activeVip.includes('crown');
+            const hasStars = state.activeVip.includes('stars');
+
+            container.innerHTML = `
+                <svg viewBox="0 0 200 260" class="w-full h-full drop-shadow-md">
+                    ${hasStars ? `<circle cx="100" cy="125" r="85" fill="none" stroke="#facc15" stroke-width="3" stroke-dasharray="6 6" /><text x="25" y="45" font-size="20">✨</text><text x="155" y="45" font-size="20">✨</text><text x="20" y="210" font-size="18">⭐</text><text x="160" y="210" font-size="18">⭐</text>` : ''}
+                    ${hasCape ? `<path d="M65 85 L35 215 L165 215 L135 85 Z" fill="#9333ea" opacity="0.85" />` : ''}
+                    <rect x="95" y="200" width="10" height="40" fill="#94a3b8" />
+                    <ellipse cx="100" cy="242" rx="38" ry="8" fill="#64748b" />
+                    <circle cx="100" cy="52" r="24" fill="#fde68a" stroke="#d97706" stroke-width="2" />
+                    <rect x="93" y="74" width="14" height="12" fill="#fde68a" />
+                    <path d="M65 86 L135 86 L125 140 L145 202 L55 202 L75 140 Z" fill="${color}" stroke="#ffffff" stroke-width="3" />
+                    <rect x="74" y="136" width="52" height="7" rx="3" fill="#fbbf24" />
+                    ${hasNecklace ? `<path d="M84 86 Q100 106 116 86" fill="none" stroke="#facc15" stroke-width="4" /><circle cx="100" cy="98" r="4" fill="#fef08a" />` : ''}
+                    ${hasGlasses ? `<rect x="82" y="44" width="15" height="10" rx="2" fill="#1e293b" stroke="#f472b6" stroke-width="2" /><rect x="103" y="44" width="15" height="10" rx="2" fill="#1e293b" stroke="#f472b6" stroke-width="2" /><line x1="97" y1="49" x2="103" y2="49" stroke="#f472b6" stroke-width="2" />` : ''}
+                    ${hasBeret && !hasCrown ? `<ellipse cx="102" cy="28" rx="26" ry="10" fill="#e11d48" /><path d="M100 16 L104 20" stroke="#e11d48" stroke-width="3" />` : ''}
+                    ${hasCrown ? `<polygon points="78,30 85,12 100,24 115,12 122,30" fill="#facc15" stroke="#ca8a04" stroke-width="2" />` : ''}
+                    ${hasBag ? `<path d="M138 145 Q148 130 158 145" fill="none" stroke="#78350f" stroke-width="3" /><rect x="135" y="145" width="26" height="22" rx="4" fill="#f59e0b" stroke="#78350f" stroke-width="2" />` : ''}
+                </svg>
+            `;
+        }
+
+        function renderVipBar() {
+            document.getElementById('vip-count').textContent = `${state.unlockedVip.length}/7`;
+            const bar = document.getElementById('vip-bar');
+            bar.innerHTML = VIP_ACCESSORIES.map(acc => {
+                const unlocked = state.unlockedVip.includes(acc.id);
+                return `
+                    <div title="${acc.name} (${acc.reqHits} acertos)" class="h-9 rounded-xl border flex items-center justify-center text-base ${unlocked ? 'bg-amber-100 border-amber-400 shadow-sm' : 'bg-slate-100 border-slate-200 opacity-40'}">
+                        ${acc.icon}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getStylistTitle(hits) {
+            if (hits >= 13) return '👑 Estilista Chefe da Alta Costura Gramatical';
+            if (hits >= 10) return '🌟 Designer Destaque das Passarelas';
+            if (hits >= 7) return '👗 Consultor(a) Criativo(a) de Estilo';
+            return '🧵 Aprendiz Promissor(a) do Ateliê';
+        }
+
+        function finishGame() {
+            document.getElementById('screen-game').classList.add('hidden');
+            document.getElementById('screen-end').classList.remove('hidden');
+
+            const title = getStylistTitle(state.hits);
+            document.getElementById('cert-name').textContent = state.playerName;
+            document.getElementById('cert-class').textContent = state.playerClass;
+            document.getElementById('cert-title').textContent = title;
+            document.getElementById('cert-score').textContent = `${state.score} pts`;
+            document.getElementById('cert-hits').textContent = `${state.hits} / ${state.questions.length}`;
+            document.getElementById('cert-date').textContent = new Date().toLocaleDateString('pt-BR');
+
+            const colorPicker = document.getElementById('custom-color-picker');
+            colorPicker.innerHTML = CATEGORIES.map(c => `
+                <button onclick="changeCertColor('${c.color}')" class="w-8 h-8 rounded-full border-2 border-white shadow" style="background-color: ${c.color}" title="${c.label}"></button>
+            `).join('');
+
+            renderCustomVipToggles();
+            renderMannequin('cert-mannequin');
+
+            saveScoreToRanking({
+                name: state.playerName,
+                playerClass: state.playerClass,
+                avatar: state.avatar,
+                score: state.score,
+                hits: state.hits,
+                title: title,
+                date: new Date().toLocaleDateString('pt-BR')
+            });
+        }
+
+        function changeCertColor(color) {
+            state.outfitColor = color;
+            renderMannequin('cert-mannequin');
+        }
+
+        function renderCustomVipToggles() {
+            const container = document.getElementById('custom-vip-toggles');
+            container.innerHTML = VIP_ACCESSORIES.map(acc => {
+                const unlocked = state.unlockedVip.includes(acc.id);
+                const active = state.activeVip.includes(acc.id);
+                return `
+                    <button type="button" ${!unlocked ? 'disabled' : ''} onclick="toggleCertAccessory('${acc.id}')" class="p-2 rounded-xl border text-xs font-bold flex items-center gap-2 transition ${!unlocked ? 'bg-slate-100 text-slate-400 opacity-50 cursor-not-allowed' : active ? 'bg-pink-100 border-pink-500 text-pink-800' : 'bg-white border-slate-200 text-slate-700'}">
+                        <span>${acc.icon}</span>
+                        <span class="truncate">${acc.name}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function toggleCertAccessory(accId) {
+            const idx = state.activeVip.indexOf(accId);
+            if (idx > -1) {
+                state.activeVip.splice(idx, 1);
+            } else {
+                state.activeVip.push(accId);
+            }
+            renderCustomVipToggles();
+            renderMannequin('cert-mannequin');
+        }
+
+        function resetToStart() {
+            document.getElementById('screen-end').classList.add('hidden');
+            document.getElementById('screen-start').classList.remove('hidden');
+        }
+
+        function saveScoreToRanking(entry) {
+            const key = 'look_adverbios_ranking_v1';
+            const list = JSON.parse(localStorage.getItem(key) || '[]');
+            list.push(entry);
+            list.sort((a, b) => b.score - a.score);
+            localStorage.setItem(key, JSON.stringify(list.slice(0, 15)));
+            renderRanking();
+        }
+
+        function renderRanking() {
+            const key = 'look_adverbios_ranking_v1';
+            const list = JSON.parse(localStorage.getItem(key) || '[]');
+            const container = document.getElementById('ranking-list');
+
+            if (list.length === 0) {
+                container.innerHTML = '<p class="text-center text-sm text-slate-400 py-6">Nenhum desfile registrado ainda. Seja o primeiro a entrar na passarela!</p>';
+                return;
+            }
+
+            container.innerHTML = list.map((item, idx) => {
+                const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}º`;
+                return `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="flex items-center gap-3">
+                            <span class="font-extrabold text-lg w-7 text-center">${medal}</span>
+                            <span class="text-2xl">${item.avatar}</span>
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm">${item.name} <span class="text-xs text-slate-400">(${item.playerClass})</span></p>
+                                <p class="text-[11px] text-pink-600 font-semibold">${item.title}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-extrabold text-amber-600 text-sm">${item.score} pts</p>
+                            <p class="text-[11px] text-emerald-600 font-bold">${item.hits}/15 looks</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function clearRanking() {
+            if (confirm('Deseja limpar o histórico do Hall da Fama neste navegador?')) {
+                localStorage.removeItem('look_adverbios_ranking_v1');
+                renderRanking();
+            }
+        }
+
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
