@@ -22,7 +22,7 @@ Transformar o estudo morfológico e sintático das circunstâncias adverbiais (*
 ## 🚀 Como Jogar
 O jogo corre diretamente no navegador (telemóvel, tablet ou computador), sem necessidade de instalação ou ligação constante à internet após o carregamento inicial.
 
-👉 **Aceda ao jogo aqui:** [Inserir o link do seu GitHub Pages aqui]
+👉 **Aceda ao jogo aqui:** [(https://robsondias80.github.io/lookdosadverbios/)]
 
 ## 🛠️ Tecnologias Utilizadas
 - HTML5 Semântico
